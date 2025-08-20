@@ -1,20 +1,17 @@
 <template>
     <dialog-drag >
-       <p>test dialog testtesttesttesttesttest</p>
-       <p>test dialog</p>
-       <p>test dialog</p>
-       <p>test dialog</p>
-       <p>test dialog</p>
+       <ColumnChart/>
     </dialog-drag>
 </template>
 <script>
 import DialogDrag from "vue-dialog-drag";
-
+import ColumnChart from './ColumnChart.vue';
 
 export default {
   name: 'BaseModal',
   components: {
     DialogDrag,
+    ColumnChart,
   },
 }
 </script>
@@ -30,7 +27,7 @@ export default {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
   height: auto;
   position: absolute;
-  width: auto;
+  width: 700px;
   z-index: 101;
 }
 .dialog-drag .dialog-header {
