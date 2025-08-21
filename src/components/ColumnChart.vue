@@ -1,5 +1,5 @@
 <template>
-    <div id="chartdiv" style="width: 500px; height: 400px;" ref="chartdiv"></div>
+    <div id="chartdiv" style="width: 650px; height: 400px;" ref="chartdiv"></div>
 </template>
 
 <script>
@@ -33,7 +33,7 @@ export default {
   }
     var data = generateDatas(30);
     this.data = data;
-    
+
     lineAmchart(this.root, this.data);
   }
 }
