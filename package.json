@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "amcharts3": "^3.21.15",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-dialog-drag": "^0.1.29"

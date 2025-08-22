@@ -2,21 +2,24 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <button class="modal-btn" v-on:click = modalBtnClick()> modal </button>
+    <button style="margin-left: 10px"> Todo List </button>
     <div class="contain">
       <BaseModal v-if="isModalOpen"/>
+       <ColumnChart/>
     </div>
   </div>
 </template>
 
 <script>
 import BaseModal from '../components/BaseModal.vue';
+import ColumnChart from '../components/ColumnChart.vue';
 
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
-  components:{BaseModal},
+  components:{BaseModal,ColumnChart},
   data(){
     return{
       isModalOpen: false
