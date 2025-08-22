@@ -47,8 +47,6 @@ export default {
 
             let labelLoading = this.dashboard.addUIElement().setText('Loading example data ...')
 
-
-            console.log(audio2ch.ch1)
             // Load example data from file.
 
             labelLoading.dispose()

@@ -3,6 +3,7 @@
     <h1>{{ msg }}</h1>
     <button class="modal-btn" v-on:click=modalBtnClick()> modal </button>
     <button style="margin-left: 10px"> Todo List </button>
+    <TodoBoard/>
     <div class="contain" style="display: flex; justify-content: center;">
       <BaseModal v-if="isModalOpen" />
       <ColumnChart />
@@ -17,6 +18,7 @@ import BaseModal from '../components/BaseModal.vue';
 import ColumnChart from '../components/ColumnChart.vue';
 import LCJS from '../components/LCJS.vue';
 import LightningChart from '../components/LightningChart.vue'
+import TodoBoard from './TodoBoard.vue';
 
 export default {
   name: 'HelloWorld',
@@ -24,7 +26,7 @@ export default {
     msg: String
   },
   // eslint-disable-next-line vue/no-unused-components
-  components: { BaseModal, ColumnChart, LCJS, LightningChart },
+  components: { BaseModal, ColumnChart, LCJS, LightningChart,TodoBoard },
   data() {
     return {
       isModalOpen: false,
