@@ -3,7 +3,7 @@
     <h1>{{ msg }}</h1>
     <button class="modal-btn" v-on:click=modalBtnClick()> modal </button>
     <button style="margin-left: 10px"> Todo List </button>
-    <div class="contain">
+    <div class="contain" style="display: flex; justify-content: center;">
       <BaseModal v-if="isModalOpen" />
       <ColumnChart />
       <LCJS :points="points" />
