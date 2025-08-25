@@ -13,7 +13,8 @@
     "core-js": "^3.6.5",
     "element-ui": "^2.15.14",
     "vue": "^2.6.11",
-    "vue-dialog-drag": "^0.1.29"
+    "vue-dialog-drag": "^0.1.29",
+    "vue-router": "^3.0.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.6",
