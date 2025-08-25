@@ -1,11 +1,19 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <button class="modal-btn" v-on:click=modalBtnClick()> modal </button>
-    <button style="margin-left: 10px"> Todo List </button>
-    <TodoBoard/>
+    <el-button class="modal-btn" type="primary" round @click="dragModalBtnClick()">Dialog Drag Modal</el-button>
+    <el-button class="modal-btn" type="success" round @click="elmDialogVisible = true">Element-UI Modal</el-button>
+    <el-button type="success" icon="el-icon-check" circle></el-button>
+    <TodoBoard />
     <div class="contain" style="display: flex; justify-content: center;">
-      <BaseModal v-if="isModalOpen" />
+      <BaseModal v-if="dragDialogVisible" />
+      <el-dialog title="Element UI Dialog" :visible.sync="elmDialogVisible" width="30%" :before-close="handleClose">
+        <span>This is a message</span>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="elmDialogVisible=false">Cancel</el-button>
+          <el-button type="primary" @click="elmDialogVisible=fasle">Confirm</el-button>
+        </span>
+      </el-dialog>
       <ColumnChart />
       <LCJS :points="points" />
       <LightningChart />
@@ -17,7 +25,7 @@
 import BaseModal from '../components/BaseModal.vue';
 import ColumnChart from '../components/ColumnChart.vue';
 import LCJS from '../components/LCJS.vue';
-import LightningChart from '../components/LightningChart.vue'
+import LightningChart from '../components/LightningChart.vue';
 import TodoBoard from './TodoBoard.vue';
 
 export default {
@@ -25,11 +33,11 @@ export default {
   props: {
     msg: String
   },
-  // eslint-disable-next-line vue/no-unused-components
-  components: { BaseModal, ColumnChart, LCJS, LightningChart,TodoBoard },
+  components: { BaseModal, ColumnChart, LCJS, LightningChart, TodoBoard },
   data() {
     return {
-      isModalOpen: false,
+      dragDialogVisible: false,
+      elmDialogVisible: false,
       points: [
         { x: 0, y: 0 },
         { x: 1, y: 7 },
@@ -39,14 +47,19 @@ export default {
         { x: 5, y: 9 },
         { x: 6, y: 15 }
       ]
-    }
+    };
   },
   methods: {
-    modalBtnClick() {
-      this.isModalOpen = !this.isModalOpen;
+    dragModalBtnClick() {
+      this.dragDialogVisible = !this.dragDialogVisible;
+    },
+    handleClose(done) {
+      this.$confirm('Are you sure to colse this dialog?').then(_ => {
+        done();
+      }).catch(_ => {});
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
