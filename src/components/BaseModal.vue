@@ -5,7 +5,7 @@
 </template>
 <script>
 import DialogDrag from 'vue-dialog-drag';
-import ColumnChart from './ColumnChart.vue';
+import ColumnChart from '../views/ColumnChart.vue';
 
 export default {
   name: 'BaseModal',

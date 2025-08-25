@@ -7,7 +7,6 @@ import { lightningChart, emptyFill } from '@lightningchart/lcjs';
 
 export default {
   name: 'LCJS',
-  props: ['points'],
   data() {
     // Add the chart to the data in a way that Vue will not attach it's observers to it.
     // If the chart variable would be added in the return object, Vue would attach the observers and
@@ -15,7 +14,16 @@ export default {
     // Observing would slow down the chart a lot.
     this.chart = null;
     return {
-      chartId: null
+      chartId: null,
+      points: [
+        { x: 0, y: 0 },
+        { x: 1, y: 7 },
+        { x: 2, y: 3 },
+        { x: 3, y: 10 },
+        { x: 4, y: 12 },
+        { x: 5, y: 9 },
+        { x: 6, y: 15 }
+      ]
     };
   },
   beforeMount() {
@@ -33,10 +41,10 @@ export default {
       this.lc = lightningChart({
         license: '0002-n9xRML+Glr3QwdvnJVsvK6cQVxjGKwDdUQmrn5+yxNjS6P3j9y5OhH9trO5ekaGLuGtbex7ogsCXLl9yKKX4HGcV-MEYCIQDv+5zIdiAu7CLpFCIwjTAfgzsKZUW8vcWsAYGlqWsNvgIhAPUML6w6txdfzdtl94qP69Wb9Lj1ijkB8+XuNjs0qzrn',
         licenseInformation: {
-            appTitle: 'LightningChart JS Trial',
-            company: 'LightningChart Ltd.'
+          appTitle: 'LightningChart JS Trial',
+          company: 'LightningChart Ltd.'
         }
-    });
+      });
       this.chart = this.lc.ChartXY({ container: `${this.chartId}` });
       // Set chart title
       this.chart.setTitle('Getting Started');

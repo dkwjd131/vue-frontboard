@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
+import router from './router';
 
 var STORAGE_KEY = 'todos-vuekr-demo';
 var todoStorage = {
@@ -38,5 +39,6 @@ Vue.use(Element, { locale });
 Vue.config.productionTip = false
 
 new Vue({
+  router,
   render: h => h(App),
 }).$mount('#app')
