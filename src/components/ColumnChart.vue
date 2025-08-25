@@ -9,5 +9,6 @@ export default {
   mounted() {
     columnAmChart(this.$refs.chartdiv);
   }
-}
+};
+
 </script>

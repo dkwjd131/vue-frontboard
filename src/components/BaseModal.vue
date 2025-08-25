@@ -4,16 +4,16 @@
   </dialog-drag>
 </template>
 <script>
-import DialogDrag from "vue-dialog-drag";
+import DialogDrag from 'vue-dialog-drag';
 import ColumnChart from './ColumnChart.vue';
 
 export default {
   name: 'BaseModal',
   components: {
     DialogDrag,
-    ColumnChart,
-  },
-}
+    ColumnChart
+  }
+};
 </script>
 <style src="vue-dialog-drag/dist/vue-dialog-drag.css"></style>
 

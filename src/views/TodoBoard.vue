@@ -27,7 +27,7 @@
 
         <h2>Add New Task</h2>
         <form class="add-form" v-on:submit.prevent="doAdd">
-            content <input type="text" ref="comment"/>
+            content <input type="text" ref="comment" />
             <button type="submit">Add</button>
         </form>
     </div>
@@ -36,8 +36,8 @@
 export default {
     data() {
         return {
-            todos: [],
+            todos: []
         };
     }
-}
+};
 </script>
