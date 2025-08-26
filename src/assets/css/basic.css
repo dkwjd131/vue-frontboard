@@ -17,6 +17,10 @@ div {
   box-sizing: border-box;
 }
 
+.flex {
+  display: flex;
+}
+
 .card {
   background: #fff;
   padding: 20px;

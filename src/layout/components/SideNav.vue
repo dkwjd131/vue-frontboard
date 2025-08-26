@@ -1,11 +1,12 @@
 <template>
   <el-menu
-    default-active="1"
+    default-active="2"
     class="el-menu-vertical-demo"
     background-color="#009749"
     text-color="#fff"
     active-text-color="#fff"
     :collapse="isCollapse"
+    :default-openeds="defaultOpen"
     @select="handleSelect"
   >
     <el-submenu index="1">
@@ -33,6 +34,11 @@
 export default {
   name: 'SideBar',
   props: ['isCollapse'],
+  data() {
+    return {
+      defaultOpen: ['1', '1-4']
+    };
+  },
   methods: {
     handleSelect(key, keyPath) {
       if (key == '1-1') {
@@ -46,7 +52,7 @@ export default {
       } else if (key == '1-4-2') {
         this.$router.push('/home/dialog/elementUI');
       } else if (key == '2') {
-        this.$router.push('/dashboard');
+        this.$router.push('/home/dashboard');
       }
     }
   }

@@ -2,11 +2,11 @@
   <div class="app-wrapper">
     <Header @menuClick="handleCollapse" />
     <div class="app-body">
-      <div class="sidebar">
+      <div class="sidenav">
         <SideNav :isCollapse="isCollapse" />
       </div>
       <div class="main">
-        <section><app-main /></section>
+        <app-main />
       </div>
     </div>
   </div>
@@ -32,24 +32,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.app-wrapper {
-  width: 100%;
-  height: 100%;
-}
-.app-body {
-  width: 100%;
-  height: calc(100% - 50px);
-  display: flex;
-}
-.sidebar {
-  height: 100%;
-}
-.main {
-  width: 100%;
-  height: 100%;
-  padding: 15px 30px;
-  background: #f7f7f8;
-}
-</style>

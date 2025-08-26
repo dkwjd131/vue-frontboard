@@ -18,6 +18,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 // css
 import './assets/css/basic.css';
+import './assets/css/layout.css';
+import './assets/css/dashboard.css';
 
 Vue.use(Element, { locale });
 

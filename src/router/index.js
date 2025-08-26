@@ -40,7 +40,7 @@ export const constantRoutes = [
         component: () => import('@/views/ElementUIDialog')
       },
       {
-        path: '/dashboard',
+        path: 'dashboard',
         component: () => import('@/views/DashBoard'),
         hidden: true
       }
