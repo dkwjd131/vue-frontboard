@@ -1,5 +1,5 @@
 <template>
-  <div :id="chartId" class="fill" />
+  <div :id="chartId" class="card fill" />
 </template>
 
 <script>
