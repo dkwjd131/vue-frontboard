@@ -1,17 +1,21 @@
 <template>
-  <el-menu default-active="2" class="el-menu-vertical-demo" default-openeds='["1","1-4"]' @select="handleSelect">
+  <el-menu
+    default-active="1"
+    class="el-menu-vertical-demo"
+    background-color="#009749"
+    text-color="#fff"
+    active-text-color="#fff"
+    :collapse="isCollapse"
+    @select="handleSelect"
+  >
     <el-submenu index="1">
       <template slot="title">
         <i class="el-icon-location" />
         <span>Components</span>
       </template>
-      <el-menu-item-group title="2D Chart">
-        <el-menu-item index="1-1">amchart</el-menu-item>
-        <el-menu-item index="1-2">ligntning chart</el-menu-item>
-      </el-menu-item-group>
-      <el-menu-item-group title="3D Chart">
-        <el-menu-item index="1-3">ligntning chart</el-menu-item>
-      </el-menu-item-group>
+      <el-menu-item index="1-1">2D amchart</el-menu-item>
+      <el-menu-item index="1-2">2D ligntning chart</el-menu-item>
+      <el-menu-item index="1-3">3D ligntning chart</el-menu-item>
       <el-submenu index="1-4">
         <template slot="title">Dialog</template>
         <el-menu-item index="1-4-1">Dialog Drag</el-menu-item>
@@ -28,6 +32,7 @@
 <script>
 export default {
   name: 'SideBar',
+  props: ['isCollapse'],
   methods: {
     handleSelect(key, keyPath) {
       if (key == '1-1') {
@@ -46,9 +51,19 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .el-menu-vertical-demo {
   width: 200px;
   height: 100%;
+}
+.el-menu-vertical-demo.el-menu--collapse {
+  width: 100%;
+  height: 100%;
+}
+.el-icon-location, .el-icon-menu ,.el-submenu__title i {
+  color: #ffffff !important;
+}
+.el-menu-item-group {
+  color: #fff;
 }
 </style>
