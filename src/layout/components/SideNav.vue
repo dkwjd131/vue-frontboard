@@ -24,7 +24,7 @@
     </el-submenu>
     <el-menu-item index="2">
       <i class="el-icon-menu" />
-      <span>Todo board</span>
+      <span>Dash Board</span>
     </el-menu-item>
   </el-menu>
 </template>
@@ -45,6 +45,8 @@ export default {
         this.$router.push('/home/dialog/dialog-drag');
       } else if (key == '1-4-2') {
         this.$router.push('/home/dialog/elementUI');
+      } else if (key == '2') {
+        this.$router.push('/dashboard');
       }
     }
   }

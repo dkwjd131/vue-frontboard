@@ -1,16 +1,12 @@
 <template>
   <div class="hello">
     <el-button type="success" icon="el-icon-check" circle />
-    <TodoBoard />
   </div>
 </template>
 
 <script>
-import TodoBoard from './TodoBoard.vue';
-
 export default {
   name: 'HelloWorld',
-  components: { TodoBoard },
   methods: {
     handleClose(done) {
       this.$confirm('Are you sure to colse this dialog?').then(_ => {

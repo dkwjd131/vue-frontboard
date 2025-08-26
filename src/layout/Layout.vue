@@ -3,7 +3,7 @@
     <Header @menuClick="handleCollapse" />
     <div class="app-body">
       <div class="sidebar">
-        <SideBar :isCollapse="isCollapse" />
+        <SideNav :isCollapse="isCollapse" />
       </div>
       <div class="main">
         <section><app-main /></section>
@@ -13,13 +13,13 @@
 </template>
 
 <script>
-import SideBar from './components/SideBar.vue';
+import SideNav from './components/SideNav.vue';
 import AppMain from './components/AppMain.vue';
 import Header from './components/Header.vue';
 
 export default {
   name: 'Layout',
-  components: { SideBar, AppMain, Header },
+  components: { SideNav, AppMain, Header },
   data() {
     return {
       isCollapse: false
