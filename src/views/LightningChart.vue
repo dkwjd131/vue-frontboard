@@ -47,7 +47,7 @@ export default {
                     container: `${this.chart3dId}`,
                     numberOfColumns: 2,
                     numberOfRows: 2,
-                    theme: Themes.darkGold
+                    theme: Themes.lightNature
                 })
                 .setRowHeight(0, 1)
                 .setRowHeight(1, 2);

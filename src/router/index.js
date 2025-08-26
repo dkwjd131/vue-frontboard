@@ -27,7 +27,7 @@ export const constantRoutes = [
       {
         path: '3dchart/lightningChart',
         name: '3D lightning chart',
-        component: () => import('@/views/LightningChart.vue')
+        component: () => import('@/views/LightningChart1.vue')
       },
       {
         path: 'dialog/dialog-drag',
