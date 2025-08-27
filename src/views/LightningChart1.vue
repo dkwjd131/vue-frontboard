@@ -1,5 +1,5 @@
 <template>
-  <div :id="chart3dId" style="width: 650px; height: 400px;">3D Chart</div>
+  <div :id="chart3dId" style="width: 100%; height: 100%;">3D Chart</div>
 </template>
 
 <script>
@@ -58,7 +58,15 @@ export default {
         );
       this.dashboard.getDefaultAxisZ().setTitle('Frequency').setUnits('Hz');
 
-      const rows = audio2ch.ch2.data[0].length;
+      // Define value -> color lookup table.
+      const theme = this.dashboard.getTheme();
+      const lut = new LUT({
+        steps: regularColorSteps(0, 255, theme.examples.spectrogramColorPalette),
+        units: 'dB',
+        interpolate: true
+      });
+
+      const rows = audio2ch.ch2[0].length;
       const surfaceSeries3D = this.dashboard
         .addSurfaceScrollingGridSeries({
           scrollDimension: 'columns',
@@ -68,14 +76,6 @@ export default {
         .setStep({ x: heatmapMinTimeStepMs, z: rowStep })
         .setFillStyle(new PalettedFill({ lut, lookUpProperty: 'y' }))
         .setWireframeStyle(emptyLine);
-
-      // Define value -> color lookup table.
-      const theme = this.dashboard.getTheme();
-      const lut = new LUT({
-        steps: regularColorSteps(0, 255, theme.examples.spectrogramColorPalette),
-        units: 'dB',
-        interpolate: true
-      });
 
       let tFirstSample;
       const handleIncomingData = (channel, timestamp, sample) => {
@@ -103,7 +103,7 @@ export default {
         addDataPointCount = Math.floor(addDataPointCount);
         for (let i = 0; i < addDataPointCount; i += 1) {
           const timestamp = tPrev + ((i + 1) / addDataPointCount) * (tNow - tPrev);
-          const sample = audio2ch.ch2.data[(iData + i) % audio2ch.ch2.data.length];
+          const sample = audio2ch.ch2[(iData + i) % audio2ch.ch2.length];
           handleIncomingData(audio2ch.ch2, timestamp, sample);
         }
         iData += addDataPointCount;
