@@ -45,6 +45,10 @@ export default {
   mounted() {
       this.startDate = getFullDateToString(this.value1[0]);
       this.endDate = getFullDateToString(this.value1[1]);
+      // console.log(this.$route);
+      const matched = this.$route.matched.filter(
+        item => item.meta && item.meta.title
+      );
   },
   methods: {
     handleDateClick() {
@@ -52,16 +56,13 @@ export default {
       var end = this.value1[1];
       this.startDate = getFullDateToString(start);
       this.endDate = getFullDateToString(end);
+      console.log('this.route', this.$route);
     }
   }
 };
 </script>
 
 <style>
-/* .el-date-editor--datetimerange.el-input__inner {
-  max-width: 300px;
-} */
-
 .el-date-editor .el-range-input {
   flex-grow: 1;
 }
@@ -69,10 +70,29 @@ export default {
 .el-date-editor .el-range__close-icon {
   width: 0px;
 }
-
 .el-button {
   font-size: 10px;
   padding: 7px 5px;
   margin-left: 10px;
 }
+/* .el-button {
+  font-size: 10px;
+  padding: 0px;
+  margin-left: 10px;
+  width: 50px;
+  height: 50px;
+  background: red;
+  color: white;
+  border: 1px solid red;
+}
+.el-button:focus,  .el-button:hover {
+  font-size: 10px;
+  padding: 0px;
+  margin-left: 10px;
+  width: 50px;
+  height: 50px;
+  background: red;
+  color: white;
+  border: 1px solid red;
+} */
 </style>

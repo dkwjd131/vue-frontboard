@@ -27,6 +27,10 @@
       <i class="el-icon-menu" />
       <span>Dash Board</span>
     </el-menu-item>
+    <el-menu-item index="3">
+      <i class="el-icon-menu" />
+      <span>File Upload</span>
+    </el-menu-item>
   </el-menu>
 </template>
 
@@ -53,6 +57,8 @@ export default {
         this.$router.push('/home/dialog/elementUI');
       } else if (key == '2') {
         this.$router.push('/home/dashboard');
+      } else if (key == '3') {
+        this.$router.push('/home/FileUpload');
       }
     }
   }

@@ -6,6 +6,7 @@
         <SideNav :isCollapse="isCollapse" />
       </div>
       <div class="main">
+        <Breadcrumb />
         <app-main />
       </div>
     </div>
@@ -16,10 +17,11 @@
 import SideNav from './components/SideNav.vue';
 import AppMain from './components/AppMain.vue';
 import Header from './components/Header.vue';
+import Breadcrumb from '../components/Breadcrumb.vue';
 
 export default {
   name: 'Layout',
-  components: { SideNav, AppMain, Header },
+  components: { SideNav, AppMain, Header, Breadcrumb },
   data() {
     return {
       isCollapse: false

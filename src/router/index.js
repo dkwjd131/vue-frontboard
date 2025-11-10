@@ -7,11 +7,12 @@ Vue.use(Router);
 export const constantRoutes = [
   {
     path: '/',
-    redirect: '/home',
+    redirect: '/home/dashboard',
     hidden: true
   },
   {
     path: '/home',
+    name: 'home',
     component: Layout,
     children: [
       {
@@ -36,14 +37,19 @@ export const constantRoutes = [
       },
       {
         path: 'dialog/elementUI',
-        name: 'Dialog Drag',
+        name: 'elementUI',
         component: () => import('@/views/ElementUIDialog')
       },
       {
         path: 'dashboard',
-        component: () => import('@/views/DashBoard'),
-        hidden: true
-      }
+        name: 'dashboard',
+        component: () => import('@/views/DashBoard')
+      },
+        {
+            path: 'fileupload',
+            name: 'fileupload',
+            component: () => import('@/views/FileUpload.vue')
+        }
 
     ]
   }

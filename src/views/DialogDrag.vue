@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 import BaseModal from '../components/BaseModal.vue';
 
 export default {
@@ -14,11 +15,19 @@ export default {
   data() {
     return {
       dragDialogVisible: false };
-    },
+  },
+  created() {
+    var newBreadcrumb = this.$route.matched.map(item => {
+      return item.name;
+    });
+    this.SET_BREADCRUMB(newBreadcrumb);
+  },
   methods: {
     dragModalBtnClick() {
       this.dragDialogVisible = !this.dragDialogVisible;
-    }
+      console.log('drat', this.$route);
+    },
+    ...mapMutations('app', ['SET_BREADCRUMB'])
   }
 };
 </script>
