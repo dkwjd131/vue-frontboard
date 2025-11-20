@@ -21,6 +21,7 @@
     <div style="font-size: 20px; margin-bottom: 10px; margin-top: 30px; font-weight: 600;">Blob 이란</div>
     <div>Blob 이란 특정 MIME Type의 바이더리 데이터를 저장하는 객체</div>
     <div>Blob 은 Binary Large Object의 약자로 바이너리 데이터를 다루기 때문에 파일 형태가 아닌 바이너리 데이터를 다룬다.</div>
+    <div>Blob 은 대용량 데이터를 chunk 단위로 쪼개어 사용하는데, 예를 들어 마이크 소리가 Blob 객체 형태로 여러차례 연달아 들어오며, 개발자는 여러 Blob 객체를 배열에 담아 새로운 Blob으로 통합해 사용한다.</div>
     <div style="font-size: 20px; margin-bottom: 10px; margin-top: 30px; font-weight: 600;">FileReader</div>
     <div>비동기적으로 데이터를 읽어온다.</div>
     <div>파일을 버퍼로 읽어 컴퓨터에 저장할 수 있다.</div>
@@ -39,7 +40,22 @@
     <div>1) result: 파일 읽은 결과를 가지고 있거나 null 값을 가집니다.</div>
     <div>2) error: 읽기 작업에서 발생한 오류를 설명하는 Error 객체를 가지거나 null 값을 가집니다.</div>
     <div>3) readyState: 객체의 상태를 숫자로 관리합니다. 0은 비어있음(Empty)으로 FileReader 객체에서 읽기 작업이 수행되지 않았음을 의미합니다. 1은 로딩 중(Loading)으로 파일을 읽는 중을 의미합니다. 2는 파일 읽기 작업이 완료(Done)되었음을 의미합니다.</div>
-    <div>참고 사이트</div>
+    <div style="font-size: 20px; margin-bottom: 10px; margin-top: 30px; font-weight: 600;">ArrayBuffer</div>
+    <div>자바스크립트에서 버퍼를 구현하는 객체</div>
+    <div>연속된 메모리 영역을 생성하고, 해당 메모리의 레퍼런스를 반환한다.</div>
+    <div>인자로 할당할 byte 크기를 넘겨주며, 넘겨준 사이즈 만큼의 고정 메모리를 할당하며 이는 수정 불가하다.</div>
+    <div>const buffer = new ArrayBuffer(8); // 8byte 의 버퍼 생성</div>
+    <div>개별 byte에 접근하기 위해서 index로 접근이 불가하고, view 객체를 통해 접근할 수 있다.</div>
+    <div>ArrayBuffer(16)로 16byte 버퍼를 생성한 후 Unit8Array, Unit16Array를 통해 8bit씩 또는 16bit씩 끊어 읽을 수 있다. </div>
+    <div>Unit8Array로 끊으면 16개, Unit16Array로 끊으면 8개로 나눠진다. </div>
+    <div style="font-size: 20px; margin-bottom: 10px; margin-top: 30px; font-weight: 600;">Base64</div>
+    <div>바이너리 데이터를 문자 코드에 영향을 받지 않는 공통 ASCII 문자로 표현하는 바이너리-텍스트 인코딩 체계</div>
+    <div> -- 주요 함수 -- </div>
+    <div> String.fromCharCode(97, 98) : {{ String.fromCharCode(97, 98) }} / 아스키 코드 숫자을 받아 문자열로 반환</div>
+    <div> String.fromCharCode.apply(null, 배열) : / 배열을 받아 문자열로 반환</div>
+    <div> btoa() : 문자열의 각 문자가 이진 데이터의 바이트 단위로 처리되는 이진 문자열 > Base64로 인코딩한 ASCII 문자열 </div>
+    <div> atob() : Base64로 인코딩한 ASCII 문자열 > 바이너리 데이터(이진 문자열) </div>
+    <div style="font-size: 20px; margin-bottom: 10px; margin-top: 30px; font-weight: 600;">참고 사이트</div>
     <div>https://u-u002.tistory.com/172</div>
     <div>https://curryyou.tistory.com/442</div>
   </div>
@@ -67,8 +83,17 @@ export default {
       const fileReader = new FileReader();
       fileReader.readAsArrayBuffer(file);
       fileReader.onload = function(evt) {
-        const viewArray = evt.target.result;
-        console.log('viewArray >> ', viewArray);
+        const arrayBuffer = evt.target.result;
+        console.log('arrayBuffer >> ', arrayBuffer);
+
+        const arrayBufferView = new Uint8Array(arrayBuffer);
+        console.log('arrayBufferView >> ', arrayBufferView);
+
+        // const base64Data = btoa(
+        //     Array.from(arrayBufferView).map(b => String.fromCharCode(b)).join('')
+        // );
+        const base64Data = btoa(String.fromCharCode.apply(null, arrayBufferView));
+        console.log('base64Data >> ', base64Data);
       };
     },
     handleRemove(file, fileList) {
